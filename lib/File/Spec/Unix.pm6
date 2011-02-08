@@ -9,12 +9,12 @@ our multi sub devnull()       { '/dev/null' }
 our multi sub case_tolerant() { False       }
 
 our multi sub canonpath(Str $path is copy) {
-    $path .= subst(m{ '/' ** {2..*} }    , '/', :g);
-    $path .= subst(m{ '/.'+ [ '/' | $ ] }, '/', :g);
-    $path .= subst(m{ ^ './'+ }          , '' , :g) unless $path eq './';
-    $path .= subst(m{ ^ '/' '../'+ }     , '/', :g);
-    $path .= subst(m{ ^ '/..' $ }        , '/', :g);
-    $path .= subst(m{ '/' $ }            , '' , :g) unless $path eq '/';
+    $path .= subst(rx{ '/' ** {2..*} }    , '/', :g);
+    $path .= subst(rx{ '/.'+ [ '/' | $ ] }, '/', :g);
+    $path .= subst(rx{ ^ './'+ }          , '' , :g) unless $path eq './';
+    $path .= subst(rx{ ^ '/' '../'+ }     , '/', :g);
+    $path .= subst(rx{ ^ '/..' $ }        , '/', :g);
+    $path .= subst(rx{ '/' $ }            , '' , :g) unless $path eq '/';
 
     $path;
 }
