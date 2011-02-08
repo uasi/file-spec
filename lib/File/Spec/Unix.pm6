@@ -6,7 +6,7 @@ our multi sub curdir()        { '.'         }
 our multi sub updir()         { '..'        }
 our multi sub rootdir()       { '/'         }
 our multi sub devnull()       { '/dev/null' }
-our multi sub case_tolerant() { False       }
+our multi sub case_tolerant() { Bool::False }
 
 our multi sub canonpath(Str $path is copy) {
     $path .= subst(rx{ '/' ** {2..*} }    , '/', :g);

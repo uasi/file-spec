@@ -11,7 +11,7 @@ plan 67;
 
 # These tests are stolen from PathTools-3.31/t/Spec.t
 
-is File::Spec::Unix::case_tolerant(), '0';
+nok File::Spec::Unix::case_tolerant(), 'not case tolerant';
  
 is File::Spec::Unix::catfile('a','b','c'),   'a/b/c';
 is File::Spec::Unix::catfile('a','b','./c'), 'a/b/c';
